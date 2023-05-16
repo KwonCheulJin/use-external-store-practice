@@ -4,10 +4,10 @@ import { container } from 'tsyringe';
 
 import useForceUpdate from './useForceUpdate';
 
-import CounterStore from '../stores/CounterStore';
+import Store from '../stores/Store';
 
-export default function useCounterStore() {
-  const store = container.resolve(CounterStore);
+export default function useStore() {
+  const store = container.resolve(Store);
 
   const forceUpdate = useForceUpdate();
 

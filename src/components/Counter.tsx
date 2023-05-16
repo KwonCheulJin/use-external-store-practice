@@ -1,14 +1,14 @@
-import useCounterStore from '../hooks/useCounterStore';
-
+import useSelector from '../hooks/useSelector';
 
 export default function Counter() {
-  const store = useCounterStore();
+  const count = useSelector((state) => state.count);
 
   return (
     <div>
-      <p>Count: {store.count}</p>
+      <p>
+        Count:
+        {count}
+      </p>
     </div>
-  )
+  );
 }
-
-

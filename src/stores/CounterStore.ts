@@ -6,7 +6,7 @@ type Listener = () => void;
 export default class CounterStore {
   count = 0;
 
-  listeners = new Set<Listener>()
+  listeners = new Set<Listener>();
 
   increase() {
     this.count += 1;
@@ -19,12 +19,13 @@ export default class CounterStore {
   }
 
   publish() {
-    this.listeners.forEach(listener => listener());
+    this.listeners.forEach((listener) => listener());
   }
 
   addListener(listener:Listener) {
     this.listeners.add(listener);
   }
+
   removeListener(listener:Listener) {
     this.listeners.delete(listener);
   }
