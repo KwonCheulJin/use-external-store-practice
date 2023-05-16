@@ -1,14 +1,10 @@
 import { useEffect } from 'react';
 
-import { container } from 'tsyringe';
-
 import useForceUpdate from './useForceUpdate';
 
-import Store from '../stores/Store';
+import ObjectStore from '../stores/ObjectStore';
 
-export default function useStore() {
-  const store = container.resolve(Store);
-
+export default function useObjectStore<T extends ObjectStore>(store: T) {
   const forceUpdate = useForceUpdate();
 
   useEffect(() => {

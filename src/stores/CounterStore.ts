@@ -1,32 +1,31 @@
 import { singleton } from 'tsyringe';
 
-type Listener = () => void;
+import { Action, Store } from 'usestore-ts';
 
 @singleton()
+@Store()
 export default class CounterStore {
   count = 0;
 
-  listeners = new Set<Listener>();
-
-  increase() {
-    this.count += 1;
-    this.publish();
+  /**
+   * @description 카운터를 증가시킨다.
+   * @author Charles
+   * @param {number} [step=1]
+   * @memberof CounterStore
+   */
+  @Action()
+  increase(step = 1) {
+    this.count += step;
   }
 
-  decrease() {
-    this.count -= 1;
-    this.publish();
-  }
-
-  publish() {
-    this.listeners.forEach((listener) => listener());
-  }
-
-  addListener(listener:Listener) {
-    this.listeners.add(listener);
-  }
-
-  removeListener(listener:Listener) {
-    this.listeners.delete(listener);
+  /**
+   * @description 카운터를 감소시킨다.
+   * @author Charles
+   * @param {number} [step=1]
+   * @memberof CounterStore
+   */
+  @Action()
+  decrease(step = 1) {
+    this.count -= step;
   }
 }
